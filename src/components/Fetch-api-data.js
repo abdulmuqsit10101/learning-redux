@@ -42,8 +42,6 @@ class FetchApiData extends Component {
       return newPosts.push(newPostsItem);
     });
 
-    console.log(newPosts);
-
     this.setState({dataSource: newPosts})
   }
 
