@@ -53,16 +53,25 @@ class FetchApiData extends Component {
 
   render() {
     const {dataSource, columns} = this.state;
-    const {loading} = this.props.posts;
+    const {loading, error} = this.props.posts;
     const {handleFetch} = this;
     return (
       <div style={{padding: 50}}>
         <Title level={3} text-align="center">Api Calling</Title>
-        <Button type="primary" loading={loading} className={'mb-2'} onClick={handleFetch}>
-          {!loading ? 'Fetch' : 'Loading'}
+        <Button type="primary" className={'mb-2'} onClick={handleFetch}>
+          {!loading ? 'Fetch' : 'Loading...'}
         </Button>
-        <h2>Data : </h2>
-        <Table dataSource={dataSource} columns={columns}/>
+        <br/><br/>
+        {
+          !error ?
+            <>
+              <h2>Data : </h2>
+              <Table dataSource={dataSource} columns={columns}/>
+            </>
+            :
+            <p>Sorry Error found</p>
+        }
+
       </div>
     )
   }
